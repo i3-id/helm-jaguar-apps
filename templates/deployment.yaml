@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dockermaven
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dockermaven
+  template:
+    metadata:
+      labels:
+        app: dockermaven
+    spec:
+      containers:
+      - name: dockermaven
+        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        ports:
+        - containerPort: 8080
+        imagePullPolicy: IfNotPresent
+      imagePullSecrets:
+      - name: regcred-i3
+
