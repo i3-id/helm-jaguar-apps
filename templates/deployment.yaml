@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dockermaven
+  name: jaguar-apps
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: dockermaven
+      app: jaguar-apps
   template:
     metadata:
       labels:
-        app: dockermaven
+        app: jaguar-apps
     spec:
       containers:
-      - name: dockermaven
+      - name: jaguar-apps
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
         ports:
         - containerPort: 8080
